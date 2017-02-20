@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>getScript_color</title>
+	<script type="text/javascript" src="../scripts/jquery.js"></script>
+	<style type="text/css">
+* { margin:0; padding:0;}
+body { font-size:12px;}
+.comment { margin-top:10px; padding:10px; border:1px solid #ccc;background:#DDD;}
+.comment h6 { font-weight:700; font-size:14px;}
+.para { margin-top:5px; text-indent:2em;background:#DDD;}
+.block{width:80px;height:80px;background:#DDD;}
+</style>
+</head>
+
+<body>
+<p><input type="button" id="go" value="执行动画"/></p>
+<div class="block"></div>
+
+<script type="text/javascript">
+	$(function(){
+		$.getScript("jquery.color.js",function(){
+			$("<p>加载完成</p>").appendTo("body");
+			$("#go").click(function(){
+				$(".block").animate({backgroundColor : 'pink'},1000)
+						   .animate({backgroundColor : 'blue'},1000);
+			})
+		})
+	})
+
+
+
+</script>
+
+
+</body>
+</html>

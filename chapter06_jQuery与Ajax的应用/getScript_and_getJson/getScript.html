@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>getScript</title>
+	<script type="text/javascript" src="../scripts/jquery.js"></script>
+</head>
+
+<body>
+<form>
+	<p><input type="button" id="send" value="加载"/></p>
+</form>
+<div class="comment">已有评论：</div>
+<div id="resText"></div>
+<script type="text/javascript">
+	$(function(){
+		$("#send").click(function(){
+			$.getScript("test.js");
+		})
+	})
+</script>
+
+
+</body>
+</html>

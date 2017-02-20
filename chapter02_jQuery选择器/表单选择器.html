@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <title>2-12</title>
+ <!--   引入jQuery -->
+ <script src="../scripts/jquery-3.1.1.js" type="text/javascript"></script>
+ 
+</head>
+<body>
+  <form id="form1" action="#">
+    <input type="button" value="Button"/><br/>
+    <input type="checkbox" name="c"/>1<input type="checkbox" name="c"/>2<input type="checkbox" name="c"/>3<br/>
+    <input type="file" /><br/>
+    <input type="hidden" /><div style="display:none">test</div><br/>
+    <input type="image" /><br/>
+    <input type="password" /><br/>
+    <input type="radio" name="a"/>1<input type="radio" name="a"/>2<br/>
+    <input type="reset" /><br/>
+    <input type="submit" value="提交"/><br/>
+    <input type="text" /><br/>
+    <select><option>Option</option></select><br/>
+    <textarea rows="5" cols="20"></textarea><br/>
+    <button>Button</button><br/>
+  </form>
+ 
+  <div></div>
+
+  <script type="text/javascript">
+  $(document).ready(function(){
+    var $inputNum = $("#form1 :input").length;
+    var $inputNum2 = $("#form1 input").length;
+    var $textNum = $("#form1 :text").length;
+    var $passwordNum = $("#form1 :password").length;
+    var $radioNum = $("#form1 :radio").length;
+    var $checkboxNum = $("#form1 :checkbox").length;
+    var $submitNum = $("#form1 :submit").length;
+    var $imageNum = $("#form1 :image").length;
+    var $resetNum = $("#form1 :reset").length;
+    var $buttonNum = $("#form1 :button").length;
+    var $fileNum = $("#form1 :file").length;
+    var $hiddenNum = $("#form1 :hidden").length;
+    var str = "有"+$inputNum+"个输入框(:input)<br>"+
+              "有"+$inputNum2+"个输入框(input)<br>"+
+              "有"+$textNum+"个单行文本框<br>"+
+              "有"+$passwordNum+"个密码框<br>"+
+              "有"+$radioNum+"个单选框<br>"+
+              "有"+$checkboxNum+"个复选框<br>"+
+              "有"+$submitNum+"个提交框<br>"+
+              "有"+$imageNum+"个图片框<br>"+
+              "有"+$resetNum+"个重置框<br>"+
+              "有"+$buttonNum+"个按钮<br>"+
+              "有"+$fileNum+"个上传文件域<br>"+
+              "有"+$hiddenNum+"个不可见元素<br>";
+
+    $("div:empty").append(str);
+  })
+    
+
+  </script>
+</body>
+</html>

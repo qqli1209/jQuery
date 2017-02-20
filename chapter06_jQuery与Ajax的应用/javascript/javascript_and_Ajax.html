@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>传统的JavaScript和Ajax</title>
+</head>
+
+<body>
+
+<input type="button" value="Ajax提交" id="Ajax" onclick="Ajax();"/>
+<div id="resText"></div>
+<script type="text/javascript">
+function Ajax(){
+	//初始化一个XMLHTTPRequest对象
+	var xmlHttpReq = null;
+	//给XMLHTTPRequest对象赋值
+	if (window.ActiveXObject) {
+		xmlHttpReq = new ActiveXObject("Microsoft.XMLHTTP");
+	} else if (window.XMLHttpRequest) {
+		xmlHttpReq = new XMLHttpRequest();
+	}
+	if (xmlHttpReq != null) {
+		//使用open方法初始化
+		xmlHttpReq.open("GET","test.php",true);
+		//定义状态改变时的回调函数
+		xmlHttpReq.onreadystatechange = RequestCallBack;
+		//GET方式，可以用null作为参数调用
+		xmlHttpReq.send(null);
+	}
+	function RequestCallBack(){
+		//请求完成加载
+		if (xmlHttpReq.readyState==4) {
+			//响应成功
+			if (xmlHttpReq.status==200) {
+				document.getElementById("resText").innerHTML = xmlHttpReq.responseText;
+			}
+		}
+	}
+}
+
+
+
+</script>
+
+
+</body>
+</html>

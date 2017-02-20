@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charet="utf-8"/>
+	<title>7-2-3</title>
+	<script type="text/javascript" src="../../scripts/jquery.js"></script>
+	<script type="text/javascript" src="lib/jquery.form.js"></script>
+</head>
+
+<body>
+<h3>Demo 1 : form插件的使用--ajaxForm()</h3>
+<form id="myForm" action="demo.php" method="post">
+	<p>
+		<label for="name">名称：</label>
+		<input type="text" name="name"/>
+	</p>
+	<p>
+		<label>地址：</label>
+		<input type="text" name="adress"/>
+	</p>
+	<p>
+		<label>自我介绍：</label>
+		<textarea name="comment" type="text"></textarea>
+	</p>	
+	<p>
+		<input type="submit" id="test" value="提交"/>
+	</p>
+	<div id="output1" style="display: none;"></div>
+</form>
+
+<script type="text/javascript">
+	$(function(){
+		$("#myForm").ajaxForm(function(){
+			$("#output1").html("提交成功！").show();
+		})
+	})
+</script>
+
+
+
+</body>
+</html>

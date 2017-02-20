@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC"-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang = "en">
+<head>
+	<meta charset = "utf-8"/>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<title>自定义动画animate()</title>
+	<script type="text/javascript" src = "../../scripts/jquery.js"></script>
+</head>
+
+<body>
+<div id="panel">
+</div>
+
+<script type="text/javascript">
+	
+	$(function(){
+		$("#panel").click(function(){
+			//s$(this).animate({left:"500px"},3000); //移动到距离页面左边500像素的位置
+			//$(this).animate({left:"+=500px"},3000); //在当前位置基础上累加500像素
+			//$(this).animate({left:"+=500px", height:"+=100px"},3000); //同时改变位置和高度
+			//按顺序执行多个动画
+			/*
+			$(this).animate({left:"+=500px"},3000)
+				   .animate({height:"+=100px"},3000);
+				   */
+
+			//综合动画
+			/*
+			$(this).animate({left:"+=500px",height:"+=100px",opacity:"1"},3000)
+				   .animate({top:"+=500px",width:"+=100px"},3000)
+				   .fadeOut(3000);
+				   */
+				   
+			//动画回调函数
+			$(this).animate({left:"+=500px",height:"+=100px",opacity:"1"},3000)
+				   .animate({top:"+=500px",width:"+=100px"},3000,function(){
+				   	$(this).css("border","solid 5px blue");
+				   })
+				   
+			
+		})
+	})
+
+
+</script>
+
+
+</body>
+</html>

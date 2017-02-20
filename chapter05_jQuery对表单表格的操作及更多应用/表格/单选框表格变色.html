@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC"-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang = "en">
+<head>
+	<meta charset = "utf-8"/>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>单选框表格变色</title>
+	<script type="text/javascript" src = "../../scripts/jquery.js"></script>
+</head>
+
+<body>
+<table>
+	<thead>
+		<tr>
+			<th></th>
+			<th>姓名</th>
+			<th>性别</th>
+			<th>暂住地</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<td><input type="radio"></td>
+			<td>张山</td>
+			<td>男</td>
+			<td>浙江宁波</td>
+		</tr>
+		<tr>
+			<td><input type="radio"></td>
+			<td>李四</td>
+			<td>女</td>
+			<td>浙江杭州</td>
+		</tr>
+		<tr>
+			<td><input type="radio"></td>
+			<td>王五</td>
+			<td>男</td>
+			<td>湖南长沙</td>
+		</tr>
+		<tr>
+			<td><input type="radio"></td>
+			<td>赵六</td>
+			<td>男</td>
+			<td>浙江温州</td>
+		</tr>
+		<tr>
+			<td><input type="radio"></td>
+			<td>Rain</td>
+			<td>男</td>
+			<td>浙江杭州</td>
+		</tr>
+		<tr>
+			<td><input type="radio" checked="checked"></td>
+			<td>MAXMAN</td>
+			<td>女</td>
+			<td>浙江杭州</td>
+		</tr>
+	</tbody>
+</table>
+
+
+<script type="text/javascript">
+	$(function(){
+		//奇数偶数行分别增加背景色
+		$("tbody tr:odd").addClass("odd");
+		$("tbody tr:even").addClass("even");
+		//某行高亮
+		//$("tr:contains('王五')").addClass("selected");
+
+		//单选框控制高亮
+		//$(":radio:checked").parent().parent().addClass("selected");
+		$("tbody tr:has(':checked')").addClass("selected");
+		$("tbody tr").click(function(){
+			$(this).siblings().find(":radio").attr("checked",false);
+			$(this).addClass("selected") //添加selected属性
+				   .siblings().removeClass("selected") //删除其他的selected属性
+				   .end()    //重新返回$(this)对象
+				   .find(":radio").attr("checked",true)
+		})
+
+	})
+
+</script>
+
+</body>
+</html>

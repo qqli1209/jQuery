@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <title>2-11</title>
+ <!--   引入jQuery -->
+ <script src="../scripts/jquery-3.1.1.js" type="text/javascript"></script>
+ 
+</head>
+
+<body>
+  <h3> 表单对象属性过滤选择器.</h3>
+   <form id="form1" action="#">
+	<button type="reset">重置所有表单元素</button>
+	<br /><br />
+  <button id="btn1">对表单内 可用input 赋值操作.</button>
+  <button id="btn2">对表单内 不可用input 赋值操作.</button>
+  
+  <br /><br />
+	
+     可用元素：<input name="add" value="可用文本框"/>  <br/>
+     不可用元素：<input name="email" disabled="disabled" value="不可用文本框"/><br/>
+     可用元素： <input name="che" value="可用文本框" /><br/>
+	 不可用元素：<input name="name" disabled="disabled"  value="不可用文本框"/><br/>
+	 <br/>
+     多选框：<br/>
+	 <input type="checkbox" name="newsletter" checked="checked" value="test1" />test1
+     <input type="checkbox" name="newsletter" value="test2" />test2
+     <input type="checkbox" name="newsletter" value="test3" />test3
+     <input type="checkbox" name="newsletter" checked="checked" value="test4" />test4
+     <input type="checkbox" name="newsletter" value="test5" />test5
+	 <div></div>
+
+	 <br/><br/>
+     下拉列表1：<br/>
+	<select name="test" multiple="multiple" style="height:100px">
+		<option>浙江</option>
+		<option selected="selected">湖南</option>
+		<option>北京</option>
+		<option selected="selected">天津</option>
+		<option>广州</option>
+		<option>湖北</option>
+    </select>
+    
+     <br/><br/>
+     下拉列表2：<br/>
+	 <select name="test2" >
+    <option>浙江</option>
+    <option>湖南</option>
+    <option selected="selected">北京</option>
+    <option>天津</option>
+    <option>广州</option>
+    <option>湖北</option>
+    </select>
+	<br/><br/>
+
+     <div></div>
+  </form>
+
+<script type="text/javascript">
+	$("#btn1").click(function(){
+		$("#form1 input:enabled").val("这里变化了");
+		return false;
+	})
+	
+	$("#btn2").click(function(){
+		$("#form1 input:disabled").val("这里变化了");
+		return false;
+	})
+
+	function countChecked(){
+		var n = $("input:checked").length;
+		$("div").eq(0).html("有"+n+"个元素被选中了");
+	}
+	$(":checkbox").click(countChecked);
+	countChecked();
+	
+	$("select").change(function(){
+		var str = "";
+		$("select :selected").each(function(){
+			str += $(this).text()+",";
+		});
+		$("div").eq(1).html("你选中的是" + str);
+	}).trigger('change');
+
+
+</script>
+
+</body>
+</html>

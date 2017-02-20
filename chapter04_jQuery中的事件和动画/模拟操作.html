@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta charset="utf-8"/>
+	<title>模拟操作</title>
+	<script type="text/javascript" src = "../scripts/jquery-3.1.1.js"></script>
+</head>
+
+<body>
+<button id = "btn">单击我</button>
+<div id = "test"></div>
+
+<script type="text/javascript">
+	$(function(){
+		
+		//常用模拟
+	$("#btn").bind("click",myFunc1 = function(){
+		var txt = "<p>我的绑定函数1</p>";
+		$("#test").append(txt);
+	}).bind("click",myFunc2 = function(){
+		var txt = "<p>我的绑定函数2</p>";
+		$("#test").append(txt);
+	}).bind("click",myFunc3 = function(){
+		var txt = "<p>我的绑定函数3</p>";
+		$("#test").append(txt);
+	})
+	$("#btn").trigger("click"); //模拟用户操作，达到单击效果
+	//$("#btn").click();
+
+	//触发自定义事件
+	$("#btn").bind("myClick",function(){
+		$("#test").append("<p>触发自定义事件</p>");
+	})
+	$("#btn").trigger("myClick");
+
+	//传递数据
+	
+	$('#btn').bind("myClick", function(event, message1, message2){
+		$('#test').append( "<p>"+message1 + message2 +"</p>");
+		});
+	$("#btn")
+		//.click(function(){
+		//$(this).trigger("myClick",["我的自定义","事件"]);
+		//})
+	.trigger("myClick",["我的自定义","事件"]);
+
+	//其他用法
+	//绑定多个事件类型
+	$("div").bind("mouseover mouseout",function(){
+		$(this).toggleClass("over");
+	})
+	//添加事件命名空间，便于管理
+	
+	//相同事件名称，不同命名空间执行方法
+
+
+ 
+})
+
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+
+input,textarea {
+	margin : 6px;
+}
+
+textarea {
+	height : 120px;
+}
+
+.focus {
+	border : 1px solid #f00;
+	background : #fcc;
+}

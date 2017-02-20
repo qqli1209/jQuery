@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta charset="utf-8"/>
+	<title></title>
+	<script type="text/javascript" src = "../scripts/jquery-3.1.1.js"></script>
+</head>
+
+<body>
+
+<input type="text" id="adress" value = "请输入邮箱地址">
+<input type="text" id="password" value = "请输入密码">
+<input type="button" value="登录">
+
+<script type="text/javascript">
+	
+//地址框
+/*
+$(function(){
+	$("#adress").focus(function(){
+	var $val = $(this).val();
+	if ($val == "请输入邮箱地址") {
+		$(this).val("");
+	}
+})
+$("#adress").blur(function(){
+	var $val = $(this).val();
+	if ($val == "") {
+		$(this).val("请输入邮箱地址");
+	}
+})
+//密码框
+$("#password").focus(function(){
+	var $val = $(this).val();
+	if ($val == "请输入密码") {
+		$(this).val("");
+	}
+})
+$("#password").blur(function(){
+	var $val = $(this).val();
+	if ($val == "") {
+		$(this).val("请输入密码");
+	}
+})
+})
+
+*/
+$(function(){
+	$("#adress").focus(function(){
+		var $val = $(this).val();
+		if ($val == this.defaultValue) {
+			$(this).val("");
+		} 
+	})
+
+	$("#password").focus(function(){
+		var $val = $(this).val();
+		if ($val == this.defaultValue) {
+			$(this).val("");
+		}
+	})
+
+	$("#adress").blur(function(){
+		var $val = $(this).val();
+		if ($val == "") {
+			$(this).val(this.defaultValue);
+		}
+	})
+
+	$("#password").blur(function(){
+		var $val = $(this).val();
+		if ($val == "") {
+			$(this).val(this.defaultValue);
+		}
+	})
+})
+
+
+</script>
+</body>
+</html>

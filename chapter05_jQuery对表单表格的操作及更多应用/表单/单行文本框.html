@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC"-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang = "en">
+<head>
+	<meta charset = "utf-8"/>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>单行文本框</title>
+	<script type="text/javascript" src = "../../scripts/jquery.js"></script>
+</head>
+
+<body>
+
+<form action="#" method="POST" id="regForm">
+	<fieldset>
+		<legend>个人基本信息</legend>
+		<div>
+			<label for="username">名称：</label>
+			<input type="text" id="username">
+		</div>
+
+		<div>
+			<label for="password">密码：</label>
+			<input type="password" id="pass">
+		</div>
+
+		<div>
+			<label for="msg">详细信息</label>
+			<textarea id="msg"></textarea>
+		</div>
+		
+	</fieldset>
+</form>
+
+<script type="text/javascript">
+	$(function(){
+		$(":input").focus(function(){
+			$(this).addClass("focus");
+		}).blur(function(){
+			$(this).removeClass("focus");
+		})
+	})
+</script>
+
+</body>
+</html>

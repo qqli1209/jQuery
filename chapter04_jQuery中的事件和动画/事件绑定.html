@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta charset="utf-8"/>
+	<title>基本效果</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	<script type="text/javascript" src = "../scripts/jquery.js"></script>
+</head>
+<body>
+<div id="panel">
+	<h5 class="head">什么是jQuery?</h5>
+	<div class="content">
+		jQuery是继Prototype之后又一个优秀的JavaScript库，它是一个由 John Resig 创建于2006年1月的开源项目。jQuery凭借简洁的语法和跨平台的兼容性，极大地简化了JavaScript开发人员遍历HTML文档、操作DOM、处理事件、执行动画和开发Ajax。它独特而又优雅的代码风格改变了JavaScript程序员的设计思路和编写程序的方式。
+	</div>
+</div>
+
+<script type="text/javascript">
+
+$(function(){
+	//增强效果
+	/*
+	$("#panel h5.head").bind("click",function(){
+		var $content = $(this).next();
+		if ($content.is(":visible")) {
+			$content.hide();
+		} else {
+			$content.show();
+		}
+	})
+	*/
+
+	//改变类型
+	/*
+	$("#panel h5.head").bind("mouseover",function(){
+		$(this).next().show();
+	}).bind("mouseout",function(){
+		$(this).next().hide();
+	})
+	*/
+	//简写
+	/*
+	$("#panel h5.head").mouseover(function(){
+		$(this).next().show();
+	}).mouseout(function(){
+		$(this).next().hide();
+	})
+	*/
+	//合成事件，用hover代替,hover模拟光标悬停事件
+	/*
+	$("#panel h5.head").hover(function(){
+		$(this).next().show();
+	},function(){
+		$(this).next().hide();
+	})
+	*/
+
+    //toggle,模拟鼠标连续单击事件
+    /*
+    $("#panel h5.head").toggle(function(){
+    	$(this).next().show();
+    },function(){
+    	$(this).next().hide();
+    })
+    */
+
+    //点击时高亮显示标题
+    $("#panel h5.head").toggle(function(){
+    	$(this).next().show();
+    	$(this).addClass("highlight");
+    },function(){
+    	$(this).next().hide();
+    	$(this).removeClass("highlight");
+    })
+    
+    //事件冒泡
+    
+    
+})
+		
+</script>
+
+</body>
+</html>

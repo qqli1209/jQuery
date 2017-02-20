@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>7-5-5</title>
+	<script type="text/javascript" src="../../scripts/jquery.js"></script>
+	<script type="text/javascript" src="../../scripts/lib/jquery-ui.js"></script>
+	<style type="text/css">
+		#myList {
+			width: 80px;
+			background-color: #EEE;
+			list-style: none;
+			padding: 5px;
+		}
+		#myList li a{
+			text-decoration: none;
+			color: #0077B0;
+		}
+		#myList .qlink {
+			font-size: 0.8em;
+			color: #666;
+			margin-left: 6px;
+		}
+		#myList a:hover {
+			text-decoration: underline;
+		}
+	</style>
+</head>
+
+<body>
+
+<ul id="myList">
+	<li id="myList_mood">
+		<a href="#">心情</a>
+	</li>
+	<li id="myList_photo">
+		<a href="#">相册</a>
+		<a href="#" class="qlink">上传</a>
+	</li>
+	<li id="myList_blog">
+		<a href="#">日志</a>
+		<a href="#" class="qlink">发表</a>
+	</li>
+	<li id="myList_vote">
+		<a href="#">投票</a>
+	</li>
+	<li id="myList_share">
+		<a href="#">分享</a>
+	</li>
+	<li id="myList_group">
+		<a href="#">群组</a>
+	</li>
+</ul>
+
+<script type="text/javascript">
+$(function(){
+	$("#myList").sortable({
+		delay: 1,    //修复潜在链接单击问题
+		stop:function(){
+			$.post(   //用ajax处理用户请求
+				"sortable.php",
+				$("#myList").sortable('serialize'),  //获取元素排列顺序
+				function(response){
+					alert(response);
+				}
+			);
+		}
+	}); 
+})
+	
+</script>
+
+</body>
+</html>

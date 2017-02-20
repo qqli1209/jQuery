@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>alter Blog Color</title>
+	<style type="text/css">
+	table		{ border:0;border-collapse:collapse;}
+	td	{ font:normal 12px/17px Arial;padding:2px;width:100px;}
+	th			{ font:bold 12px/17px Arial;text-align:left;padding:4px;border-bottom:1px	solid #333;}
+	.even		{ background:#FFF38F;}  /* 偶数行样式*/
+	.odd		{ background:#FFFFEE;}  /* 奇数行样式*/
+	.selected	{ background:#FF6500;color:#fff;}
+	</style>
+	<!--   引入jQuery -->
+	<script src="../../scripts/jquery.js" type="text/javascript"></script>
+</head>
+
+<body>
+<table id="table1">
+	<thead><tr><th> </th><th>姓名</th><th>性别</th><th>暂住地</th></tr></thead>
+	<tbody>
+		<tr>
+			<td><input type="checkbox" name="choice" value=""/></td>
+			<td>张山</td>
+			<td>男</td>
+			<td>浙江宁波</td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="choice" value="" /></td>
+				<td>李四</td>
+			<td>女</td>
+			<td>浙江杭州</td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="choice" value="" checked="checked" /></td>
+					<td>王五</td>
+			<td>男</td>
+			<td>湖南长沙</td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="choice" value="" /></td>
+			<td>找六</td>
+			<td>男</td>
+			<td>浙江温州</td>	
+		</tr>
+		<tr>
+		<td><input type="checkbox" name="choice" value="" /></td>
+				<td>Rain</td>
+			<td>男</td>
+			<td>浙江杭州</td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="choice" value="" checked="checked" /></td>
+			<td>MAXMAN</td>
+			<td>女</td>
+			<td>浙江杭州</td>
+		</tr>
+	</tbody>
+</table>
+
+
+<br /><br />
+
+
+<table id="table2">
+	<thead><tr><th> </th><th>姓名</th><th>性别</th><th>暂住地</th></tr></thead>
+	<tbody>
+		<tr>
+			<td><input type="checkbox" name="choice" value=""/></td>
+			<td>张山</td>
+			<td>男</td>
+			<td>浙江宁波</td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="choice" value="" /></td>
+				<td>李四</td>
+			<td>女</td>
+			<td>浙江杭州</td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="choice" value="" checked="checked" /></td>
+					<td>王五</td>
+			<td>男</td>
+			<td>湖南长沙</td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="choice" value="" /></td>
+			<td>找六</td>
+			<td>男</td>
+			<td>浙江温州</td>	
+		</tr>
+		<tr>
+		<td><input type="checkbox" name="choice" value="" /></td>
+				<td>Rain</td>
+			<td>男</td>
+			<td>浙江杭州</td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" name="choice" value="" checked="checked" /></td>
+			<td>MAXMAN</td>
+			<td>女</td>
+			<td>浙江杭州</td>
+		</tr>
+	</tbody>
+</table>
+
+<script type="text/javascript">
+//插件编写
+;(function($){
+	$.fn.extend({
+		"alterBgColor":function(options){
+			//设置options默认属性
+			options = $.extend({
+				odd:"odd",
+				even:"even",
+				selected:"selected"
+			},options);
+			$("tbody>tr:odd",this).addClass(options.odd);
+			$("tbody>tr:even",this).addClass(options.even);
+			$("tbody>tr:selected",this).addClass(options.selected);
+			$("tbody>tr",this).click(function(){
+				//判断当前是否选中
+				var hasSelected = $(this).hasClass(options.selected);
+				//选中则移除selected类，否则加上
+				$(this)[hasSelected ? "removeClass" : "addClass"](options.selected)
+				//查找内部的checkbox，并设置对应的属性
+				.find(":checkbox").attr('checked',!hasSelected);
+			});
+			//如果默认选择的，则加上selected属性
+			$("tbody>tr:has(:checked)",this).addClass(options.selected);
+			//返回this，使方法可链式操作
+			return this;
+		}
+	});
+})(jQuery);
+
+
+//插件应用	
+$(function(){
+	$("#table2").alterBgColor().find("th").css("color","red");
+})
+
+
+</script>
+
+</body>
+</html>

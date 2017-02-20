@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<style type="text/css">
+* { margin:0; padding:0;}
+body { font-size:12px;}
+.comment { margin-top:10px; padding:10px; border:1px solid #ccc;background:#DDD;}
+.comment h6 { font-weight:700; font-size:14px;}
+.para { margin-top:5px; text-indent:2em;background:#DDD;}
+</style>
+	<title>get1</title>
+	<script type="text/javascript" src="../scripts/jquery.js"></script>
+</head>
+
+<body>
+<form>
+	<p>评论:</p>
+	<p>姓名：<input type="text" name="username" id="username"/></p>
+	<p>内容<textarea cols="20" rows="2" id="content" name="content"></textarea></p>
+	<p><input type="button" id="send" value="提交"/></p>
+</form>
+<div class="comment">已有评论：</div>
+<div id="resText"></div>
+
+<script type="text/javascript">
+	
+$(function(){
+	$("#send").click(function(){
+		//请求的html页面的URL
+		$.get("get1.php",
+		//需要获取姓名和内容的值作为data参数传递给后台
+		{
+			username : $("#username").val(),
+			content : $("#content").val()
+		},
+		//回调函数，将返回的数据显示到页面上
+		//way1,服务器返回html片段
+		//只有数据成功返回(textStatus为success)
+		function(data,textStatus){
+			$("#resText").html(data);
+		}
+
+
+		)
+	})
+})
+
+</script>
+
+
+
+
+
+</body>
+</html>

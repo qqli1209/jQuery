@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta charset="utf-8"/>
+	<title>移除事件</title>
+	<script type="text/javascript" src = "../scripts/jquery-3.1.1.js"></script>
+</head>
+
+<body>
+<button id = "btn">单击我</button>
+<button id = "deleteAll">删除第二个事件</button>
+<div id = "test"></div>
+
+<script type="text/javascript">
+	
+$(function(){
+	$("#btn").bind("click",myFunc1 = function(){
+		var txt = "<p>我的绑定函数1</p>";
+		$("#test").append(txt);
+	}).bind("click",myFunc2 = function(){
+		var txt = "<p>我的绑定函数2</p>";
+		$("#test").append(txt);
+	}).bind("click",myFunc3 = function(){
+		var txt = "<p>我的绑定函数3</p>";
+		$("#test").append(txt);
+	})
+
+	$("#deleteAll").click(function(){
+		$("#btn").unbind("click",myFunc2);
+	})
+})
+
+</script>
+</body>
+</html>

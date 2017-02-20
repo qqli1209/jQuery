@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>7-2-5</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src="../../scripts/jquery.js" type="text/javascript"></script>
+<script src="lib/jquery.form.js" type="text/javascript"></script>
+</head>
+  
+<body>
+    <h3> Demo 4 : form插件的使用--ajaxForm()和ajaxSubmit(). </h3>
+<!-- demo1 -->
+<form id="myForm" action="ajax2.php" method="post"> 
+    名称： <input type="text" name="name" /> <br/>
+	地址： <input type="text" name="address" /><br/> 
+    自我介绍： <textarea name="comment"></textarea> <br/>
+    <input type="submit" id="test" value="提交" /> <br/>
+    <div id="output1" ></div>
+</form>
+ 
+ <script type="text/javascript">
+ 	$(function(){
+ 		var options = {
+ 			target : '#output1',
+ 			beforeSubmit : showRequest,
+ 			success : showResponse,
+ 			resetForm : true,
+ 			timeout : 3000
+ 		};
+
+ 		function showRequest(formData, jqForm, options){
+ 			var queryString = $.param(formData);
+ 			alert(queryString);
+ 			return true;
+ 		}
+
+ 		function showResponse(responseText, statusText, xhr, $form){
+ 			alert('状态：' + statusText + '\n 返回的内容是：' + responseText);
+ 		}
+
+ 		$("#myForm").ajaxForm(options);
+ 		//或者
+ 		//$("#myForm").submit(function(){
+ 		//	$(this).ajaxSubmit(options);
+ 		//	return false;
+ 		//})
+ 	})
+ </script>
+
+</body>
+</html>

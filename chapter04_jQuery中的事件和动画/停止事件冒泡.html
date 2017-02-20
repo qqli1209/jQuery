@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta charset="utf-8"/>
+	<title>停止事件冒泡</title>
+	<script type="text/javascript" src = "../scripts/jquery-3.1.1.js"></script>
+</head>
+
+<body>
+
+<div id = "content">
+	外层div元素
+	<span>内层div元素</span>
+	外层div元素
+</div>
+<div id = "msg"></div>
+
+<script type="text/javascript">
+	
+$(function(){
+	$("span").bind("click",function(e){
+		var txt = $("#msg").html() + "<p>内层span元素被点击</p>";
+		$("#msg").html(txt);
+		e.stopPropagation(); //停止事件冒泡
+		//return false; //也可以停止冒泡
+	})
+
+	$("body").bind("click",function(){
+		var txt = $("#msg").html() + "<p>body元素被点击</p>";
+		$("#msg").html(txt);
+	})
+
+	$("#content").bind("click",function(e){
+		var txt = $("#msg").html() + "<p>外层span元素被点击</p>";
+		$("#msg").html(txt);
+		e.stopPropagation(); //停止事件冒泡
+		
+	})
+})
+
+</script>
+</body>
+</html>

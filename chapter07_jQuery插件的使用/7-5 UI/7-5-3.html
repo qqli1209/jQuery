@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>7-5-3</title>
+	<script type="text/javascript" src="../../scripts/jquery.js"></script>
+	<script type="text/javascript" src="../../scripts/lib/jquery-ui.js"></script>
+	<style type="text/css">
+		#myList {
+			width: 80px;
+			background-color: #EEE;
+			list-style: none;
+			padding: 5px;
+		}
+		#myList li a{
+			text-decoration: none;
+			color: #0077B0;
+		}
+		#myList .qlink {
+			font-size: 0.8em;
+			color: #666;
+			margin-left: 6px;
+		}
+		#myList a:hover {
+			text-decoration: underline;
+		}
+	</style>
+</head>
+
+<body>
+
+<ul id="myList">
+	<li>
+		<a href="#">心情</a>
+	</li>
+	<li>
+		<a href="#">相册</a>
+		<a href="#" class="qlink">上传</a>
+	</li>
+	<li>
+		<a href="#">日志</a>
+		<a href="#" class="qlink">发表</a>
+	</li>
+	<li>
+		<a href="#">投票</a>
+	</li>
+	<li>
+		<a href="#">分享</a>
+	</li>
+	<li>
+		<a href="#">群组</a>
+	</li>
+</ul>
+
+<script type="text/javascript">
+$(function(){
+	$("#myList").sortable({delay:1}); //与单击事件冲突时修复潜在链接击中问题
+})
+	
+</script>
+
+</body>
+</html>

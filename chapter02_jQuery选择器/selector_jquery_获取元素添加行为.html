@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta charset="utf-8"/>
+	<title>selector4</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="../scripts/jquery-3.1.1.js"></script>
+</head>
+<body>
+<div class="one" id="one" >
+	id为one,class为one的div
+	<div class="mini">class为mini</div>
+</div>
+
+<div class="one"  id="two" title="test" >
+	id为two,class为one,title为test的div.
+	<div class="mini"  title="other">class为mini,title为other</div>
+	<div class="mini"  title="test">class为mini,title为test</div>
+</div>
+
+<div class="one">
+	<div class="mini">class为mini</div>
+	<div class="mini">class为mini</div>
+	<div class="mini">class为mini</div>
+	<div class="mini"></div>
+</div>
+
+<div class="one">
+	<div class="mini">class为mini</div>
+	<div class="mini">class为mini</div>
+	<div class="mini">class为mini</div>
+	<div class="mini"  title="tesst">class为mini,title为tesst</div>
+</div>
+
+
+<div style="display:none;"  class="none">
+	style的display为"none"的div
+</div>
+
+<div class="hide">class为"hide"的div</div>
+
+<div>
+	包含input的type为"hidden"的div<input type="hidden" size="8"/>
+</div>
+
+<span id="mover">正在执行动画的span元素.</span>
+
+<script type="text/javascript">
+ 	//基本选择器
+	//$("div#one").css("background","#bbffaa");
+	//$("div.mini").css("background","#bfa");
+	//$("div").css("background","#bfa");
+	//$("*").css("background","#bfa");
+	//$("span,#two").css("background","#bfa");
+
+	//层次选择器
+	//$("body div").css("background","#bfa"); //body下所有的div元素
+	//$("body>div").css("background","#bfa"); //body内子元素div
+	//$(".one+div").css("background","#bfa"); //class为one的下一个div同辈元素
+	//$(".one~div").css("background","#bfa"); //class为one的下面所有div同辈元素
+	//$(".one").next("div").css("background","#bfa"); //class为one的下一个div同辈元素
+	//$(".one").nextAll("div").css("background","#bfa"); //class为one的下面所有div同辈元素
+
+	//基本过滤选择器
+	//$("div:first").css("background","#bfa"); //第一个div元素
+	//$("div:last").css("background","#bfa");  //最后一个dvi元素
+	//$("div:not(.one)").css("background","#bfa");
+	//$("div:even").css("background","#bfa");
+	//$("div:odd").css("background","#bfa");
+	//$("div:eq(3)").css("background","#bfa"); //index从0开始
+	//$("div:gt(3)").css("background","#bfa");
+	//$("div:lt(3)").css("background","#bfa");
+	//$(":header").css("background","#bfa");
+	//$(":animated").css("background","#bfa"); //选择当前正在执行动画的所有元素
+	//$(":focus").css("background","#bfa"); //选择当前获得焦点的所有元素
+
+	//内容过滤选择器
+	//$("div:contains(di)").css("background","#bfa"); //含有文本di的div元素
+	//$("div:empty").css("background","#bfa"); //不包含子元素的div元素
+	//$("div:has(.mini)").css("background","#bfa"); //含有class为mini的div元素
+    //$("div:parent").css("background","#bfa"); //含有子元素的div元素
+
+    //可见性过滤选择器
+    //$("div:visible").css("background","#bfa"); //可见的div元素
+    //$("div:hidden").show(3000); //不可见的div元素
+
+    //属性过滤选择器
+    //$("div[title]").css("background","#bfa");
+    //$("div[title=test]").css("background","#bfa");
+    //$("div[title!=test]").css("background","#bfa");
+    //$("div[title^=te]").css("background","#bfa"); //title以te开始的div元素
+    //$("div[title$=est]").css("background","#bfa"); //title以est结束的div元素
+    //$("div[title*=es]").css("background","#bfa"); //title含有es的div元素
+    //$("div[id][title*=es]").css("background","#bfa"); //title含有es并且含有id属性的div元素
+
+    //子元素过滤选择器
+    //$("div.one :nth-child(2)").css("background","#bfa"); //class为one的父元素的第二个子元素
+    //$("div.one :first-child").css("background","#bfa"); //class为one的父元素的第一个子元素
+    //$("div.one :last-child").css("background","#bfa"); //class为one的父元素的最后一个子元素
+    //$("div.one :only-child").css("background","#bfa"); 
+    //如果class为one的div元素只有一个子元素，则改变这个子元素的背景色
+
+    //表单对象属性过滤选择器
+
+
+
+</script>
+
+</body>
+</html>

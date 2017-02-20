@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC"-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang = "en">
+<head>
+	<meta charset = "utf-8"/>
+	<link rel="stylesheet" type="text/css" href="form.css">
+	<title>表单验证</title>
+	<script type="text/javascript" src = "../../scripts/jquery.js"></script>
+</head>
+
+<body>
+<form method="post" action="">
+	<div class="int">
+		<label for="username">用户名：</label>
+		<input type="text" id="username" class="required"/>		
+	</div>
+
+	<div class="int">
+		<label for="email">邮箱：</label>
+		<input type="text" id="email" class="required"/>
+	</div>
+
+	<div class="int">
+		<label for="personinfo">个人资料：</label>
+		<input type="text" id="personinfo"/>
+	</div>
+
+	<div class="sub">
+		<input type="submit" id="send" value="提交"/>
+		<input type="reset" id="res"/>
+	</div>
+</form>
+
+<script type="text/javascript">
+	
+$(function(){
+	//添加红色点
+	$(".required").each(function(){
+		var $required = $("<strong class='high'>*</strong>");
+		$(this).parent().append($required);
+	})
+
+	//失去焦点
+	$("form input.required").blur(function(){
+		var $parent = $(this).parent();
+		$parent.find(".formtips").remove();
+		//验证用户名
+		if($(this).attr("id") == "username") {
+			if ($(this).val().length<6) {
+				var $errorMsg = "<span class='formtips onError'>请输入至少6位用户名.</span>";
+				$parent.append($errorMsg);
+			} else {
+				var $correctMsg = "<span class='formtips onSuccess'>输入正确.</span>";
+				$parent.append($correctMsg);
+			}
+		}
+
+		//验证邮箱
+		if ($(this).attr("id") == "email") {
+			if( this.value=="" || ( this.value!="" && !/.+@.+\.[a-zA-Z]{2,4}$/.test(this.value) ) ) {
+				var $errorMsg = 
+				"<span class='formtips onError'>请输入正确的Email地址.</span>";
+				$parent.append($errorMsg);
+			} else {
+				var $correctMsg = 
+				"<span class='formtips onSuccess'>输入正确.</span>";
+				$parent.append($correctMsg);
+			}
+		}
+	}).keyup(function(){
+		$(this).triggerHandler("blur");
+	}).focus(function(){
+		$(this).triggerHandler("blur");
+	})
+
+	//提交
+	$("#send").click(function(){
+		$("form input.required").trigger('blur'); //用trigger方法触发blur事件
+		var $errorNum = $(".onError").length;
+		if ($errorNum > 0) {
+			alert("请正确填写表单");
+			return false;
+		} else {
+			alert("注册成功，密码已发到你的邮箱，请查收。");
+		}
+	})
+})
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta charset="utf-8"/>
+	<title>阻止默认行为</title>
+	<script type="text/javascript" src = "../scripts/jquery-3.1.1.js"></script>
+</head>
+
+<body>
+
+<form action = "test.html">
+	用户名：<input type="text" name="name" id = "user_name"/>
+	<input type="submit" value="提交" id = "sub"/>
+</form>
+<div id = "msg"></div>
+
+<script type="text/javascript">
+	$(function(){
+		$("#sub").bind("click",function(e){
+			var username = $("#user_name").val();
+			if (username == "") {
+				$("#msg").html("<p>文本框的值不能为空</p>");
+				e.preventDefault(); //阻止默认行为
+			    //return false; //阻止默认行为
+			} 
+		})
+	})
+
+
+</script>
+</body>
+</html>

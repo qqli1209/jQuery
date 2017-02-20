@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>getJson from Web</title>
+	<script type="text/javascript" src="../scripts/jquery.js"></script>
+	<style type="text/css">
+* { margin:0; padding:0;}
+body { font-size:12px;}
+.comment { margin-top:10px; padding:10px; border:1px solid #ccc;background:#DDD;}
+.comment h6 { font-weight:700; font-size:14px;}
+.para { margin-top:5px; text-indent:2em;background:#DDD;}
+.block{width:80px;height:80px;background:#DDD;}
+</style>
+</head>
+
+<body>
+<p><input type="button" id="send" value="加载"/></p>
+<div  class="comment">已有评论：</div>
+<div id='resText'></div>
+
+<script type="text/javascript">
+	
+$(function(){
+	$("#send").click(function(){
+		$.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?tags=car&tagmode=any&format=json&jsoncallback=?",
+			function(data){
+				$.each(data.items,function(itemIndex,item){
+					$("<img class='para'>").attr("src",item.media.m)
+										   .appendTo($("#resText"));
+					if (itemIndex==3) {
+						return false;
+					}
+				})
+			})
+	})
+})
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC"-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang = "en">
+<head>
+	<meta charset = "utf-8"/>
+	<title>多行文本框</title>
+	<script type="text/javascript" src = "../../scripts/jquery.js"></script>
+</head>
+
+<body>
+<form class="msg">
+	<div class="mag_caption">
+		<span class="bigger"><input type="button" value="放大"></span>
+		<span class="smaller"><input type="button" value="缩小"></span>
+		<span class="up"><input type="button" value="向上"></span>
+		<span class="down"><input type="button" value="向下"></span>
+
+
+	</div>
+
+	<div>
+		<textarea id="comment" rows="10" cols="20">多行文本框高度变化多行文本框高度变化多行文本框高度变化多行文本框高度变化多行文本框高度变化多行文本框高度变化多行文本框高度变化多行文本框高度变化多行文本框高度变化多行文本框高度变化多行文本框高度变化多行文本框高度变化多行文本框高度变化多行文本框高度变化多行文本框高度变化多行文本框高度变化多行文本框高度变化多行文本框高度变化多行文本框高度变化多行文本框高度变化</textarea>
+	</div>
+</form>
+
+
+<script type="text/javascript">
+		$(function(){
+			var $comment = $("#comment");
+			$(".bigger").click(function(){
+				if (!$comment.is(":animated")) {
+					if ($comment.height()<500) {
+					//$comment.height($comment.height()+50);
+					$comment.animate({height:"+=50"},400)
+					}
+				}
+				
+			})
+
+
+			$(".smaller").click(function(){
+				if(!$comment.is(":animated")){
+					if ($comment.height()>50) {
+					//$comment.height($comment.height()-50);
+					$comment.animate({height:"-=50"},400);
+					}
+				}
+			})
+
+			$(".up").click(function(){
+				if (!$comment.is(":animated")) {
+					$comment.animate({scrollTop:"-=50"},400);
+				}
+			})
+
+			$(".down").click(function(){
+				if(!$comment.is(":animated")){
+					$comment.animate({scrollTop:"+=50"},400);
+				}
+			})
+
+
+
+		})
+
+
+</script>
+
+</body>
+</html>

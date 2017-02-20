@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<title>jquery DOM</title>
+	<script type="text/javascript" src = "../scripts/jquery-3.1.1.js"></script>
+</head>
+
+<body>
+	<p class = "myClass" title = "choose your favourite fruit">你喜欢的水果是？</p>
+	<ul>
+		<li title = "apple">苹果</li>
+		<li title = "orange">橘子</li>
+		<li title = "ananas">菠萝</li>
+	</ul>
+
+	<script type="text/javascript">
+
+		//节点操作
+		//查找元素节点
+		var $li = $("ul li:eq(1)");
+		var $li_text = $li.text();
+		//alert($li_text);
+		//查找属性节点
+		var $p = $("p");
+		var $p_title = $p.attr("title");
+		//alert($p_title);
+		//创建节点
+		var $li1 = $("<li title = 'banana'>香蕉</li>");
+		var $li2 = $("<li title = 'pear'>雪梨</li>");
+		var $li3 = $("<li title = 'other'>其它</li>");
+		//插入，移动节点
+		$("ul").append($li1);
+		$("ul").append($li2);
+		var $two_li = $("ul li:eq(1)");
+		$li3.insertAfter($two_li);
+		var $three_li = $("ul li:eq(2)");
+		$three_li.insertBefore($two_li);
+		//删除节点
+		var $delete_li = $("ul li:eq(1)").remove();
+		$delete_li.appendTo("ul"); //删除的节点仍可以使用。appendTo也可用来移动元素
+		//$("ul li").remove("li[title!='banana']");
+		//复制节点
+		$("ul li").click(function(){
+			$(this).clone(true).appendTo("body");
+		}) //true参数的含义：复制元素的同时，也复制所绑定的事件
+		//替换节点
+		//$("p").replaceWith("<strong title = "your least favourite fruit">你最不喜欢的水果是？</strong>");
+		//$("<strong>你最不喜欢的水果是？</strong>").replaceAll("p"); //同上
+		//包裹节点
+		//$("strong").warp("<b></b>"); //<b>包裹在<strong>外面
+		//$("strong").wrapAll("<b></b>"); //所有的<strong>一起包裹在<b>里面
+		//$("strong").wrapInner("<b></b>"); //<b>包裹在<strong>里面
+
+
+		//属性操作
+		//获取和设置属性
+		var $p_title = $("p").attr("title");
+		//alert($p_title);
+		$("p").attr("title","high");
+		$("p").attr({"title":"high","name":"goodname"});
+		//alert($('p').attr('title'));
+		//alert($('p').attr('name'));
+		//删除属性
+		$("p").removeAttr("title");
+		//alert($('p').attr('title'));
+
+
+		//样式操作
+		//获取和设置样式
+		$("p").attr("class"); //myClass
+		$("p").attr("class","high"); //class变为hi
+		//追加样式
+		$("p").addClass("high");
+		$("p").addClass("another");
+		//移除样式
+		$("p").removeClass("another");
+		$("p").removeClass("high");
+		$("p").removeClass(); //移除所有class
+		//切换样式
+		$("p").click(function(){
+			$(this).toggleClass("another");
+		})
+		//判断是否有某个样式
+		$("p").hasClass("another"); //相当于 $("p").is(".another");
+
+
+		//设置和获取HTML，文本和值
+		//html()方法
+		var $p_html = $("p").html();
+		//alert($p_html);
+		$("p").html("<strong>你喜欢的水果是？</strong>");
+		//text()方法
+		var $p_text = $("p").text();
+		//alert($p_text);
+		var $p_text = $("p").text("what is your favourite fruit?");
+		//alert($p_text);
+		//val()方法
+		//见val.html
+
+		//遍历节点
+		//children()方法
+		var $body_chd = $("body").children();
+		var $p_chd = $("p").children();
+		var $ul_chd = $("ul").children();
+		//alert($body_chd.length);
+		//alert($p_chd.length);
+		//alert($ul_chd.length);
+		for (var i = 0; i < $body_chd.length; i++) {
+		//	alert($body_chd[i].innerHTML);
+		}
+		//next()方法
+		var $p_next = $("p").next();
+		//alert($p_next.innerHTML);
+		//prev()方法
+		var $ul_prev = $("ul").prev();
+		//siblings()方法
+		var $p_sibl = $("p").siblings();
+		//closest()方法
+
+		//CSS DOM操作
+		var $p_color = $("p").css("color");
+		//alert($p_color);
+		$("p").css("color","red");
+		$("p").css({"font-size":"20px","background-color":"#888"});
+		$("p").css("opacity",0.5);
+		$("p").height("10em");
+		alert($("p").height());
+
+	</script>
+
+</body>
+</html>

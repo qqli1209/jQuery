@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta charset="utf-8"/>
+	<title>只触发一次</title>
+	<script type="text/javascript" src = "../scripts/jquery-3.1.1.js"></script>
+</head>
+
+<body>
+<button id = "btn">单击我</button>
+<div id = "test"></div>
+
+<script type="text/javascript">
+	
+$(function(){
+	$("#btn").one("click",myFunc1 = function(){
+		var txt = "<p>我的绑定函数1</p>";
+		$("#test").append(txt);
+	}).one("click",myFunc2 = function(){
+		var txt = "<p>我的绑定函数2</p>";
+		$("#test").append(txt);
+	}).one("click",myFunc3 = function(){
+		var txt = "<p>我的绑定函数3</p>";
+		$("#test").append(txt);
+	})
+
+	
+})
+
+</script>
+</body>
+</html>

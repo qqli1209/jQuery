@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta charset="utf-8"/>
+	<title>案例——图片提示</title>
+	<link rel="stylesheet" type="text/css" href="css/pi.css">
+	<script type="text/javascript" src = "../scripts/jquery-3.1.1.js"></script>
+</head>
+
+<body>
+
+<ul>
+	<li><a href="images/apple_1_bigger.jpg" class = "tooltip" title = "apple iPod">
+	<img src="images/apple_1.jpg"></a></li>
+	<li><a href="images/apple_2_bigger.jpg" class = "tooltip" title = "apple iPod nano">
+	<img src="images/apple_2.jpg"></a></li>
+	<li><a href="images/apple_3_bigger.jpg" class = "tooltip" title = "apple iPhone">
+	<img src="images/apple_3.jpg"></a></li>
+	<li><a href="images/apple_4_bigger.jpg" class = "tooltip" title = "apple Mac">
+	<img src="images/apple_4.jpg"></a></li>
+</ul>
+
+<script type="text/javascript">
+	
+$(function(){
+	var x = 10;
+	var y = 20;
+	$("a.tooltip").mouseover(function(e){
+		this.myTitle = this.title;
+		this.title = "";
+		var imgTitle = this.myTitle?"<br>"+this.myTitle:"";
+		var tooltip = "<div id = 'tooltip'><img src = '" + this.href + "' alt = '预览图'/>"+imgTitle+"<\/div>";
+		$("body").append(tooltip);
+		$("#tooltip").css({"top" : (e.pageY+y)+"px",
+							"left" : (e.pageX+x)+"px"})
+					 .show("fast");
+	}).mouseout(function(){
+		this.title = this.myTitle;
+		$("#tooltip").remove();
+	}).mousemove(function(e){
+		$("#tooltip").css({"top" : (e.pageY+y)+"px",
+							"left" : (e.pageX+x)+"px"});
+	});
+})
+
+
+</script>
+
+</body>
+</html>

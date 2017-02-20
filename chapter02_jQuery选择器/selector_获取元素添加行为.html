@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta charset="utf-8"/>
+	<title>selector3</title>
+	<script type="text/javascript" src="./scripts/jquery-3.1.1.js"></script>
+</head>
+<body>
+<p>test1</p>
+<p>test2</p>
+<input type="checkbox" name="check" value="1" checked="checked"/>
+<input type="checkbox" name="check" value="2"/>
+<input type="checkbox" name="check" value="3" checked="checked"/>
+<input type="button" value="你选中的个数" id = "btn"/>
+
+<script type="text/javascript">
+	var btn = document.getElementById("btn");
+	var num = 0;
+	btn.onclick = function(){
+		var items = document.getElementsByName("check");
+		for (var i = 0; i < items.length; i++) {
+			if(items[i].checked){
+				++num;
+			}
+		}
+		alert("the number of check is " + num);
+	}
+</script>
+</body>
+</html>

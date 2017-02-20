@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" type="text/css" href="css/default.css">
+	<title>品牌列表</title>
+	<script type="text/javascript" src = "../scripts/jquery-3.1.1.js"></script>
+</head>
+<body>
+<div class="SubCategoryBox">
+	<ul>
+		<li ><a href="#">佳能</a><i>(30440) </i></li>
+		<li ><a href="#">索尼</a><i>(27220) </i></li>
+		<li ><a href="#">三星</a><i>(20808) </i></li>
+		<li ><a href="#">尼康</a><i>(17821) </i></li>
+		<li ><a href="#">松下</a><i>(12289) </i></li>
+		<li ><a href="#">卡西欧</a><i>(8242) </i></li>
+		<li ><a href="#">富士</a><i>(14894) </i></li>
+		<li ><a href="#">柯达</a><i>(9520) </i></li>
+		<li ><a href="#">宾得</a><i>(2195) </i></li>
+		<li ><a href="#">理光</a><i>(4114) </i></li>
+		<li ><a href="#">奥林巴斯</a><i>(12205) </i></li>
+		<li ><a href="#">明基</a><i>(1466) </i></li>
+		<li ><a href="#">爱国者</a><i>(3091) </i></li>
+		<li ><a href="#">其它品牌相机</a><i>(7275) </i></li>
+	</ul>
+<div class="showmore">
+	<a href="more.html"><span>显示全部品牌</span></a>
+</div>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		var $catagory = $("ul li:gt(5):not(:last)");
+		$catagory.hide();//隐藏某些li
+	
+		//if else方法
+		$("div.showmore").click(function(){
+			if ($catagory.is(":visible")) { //如果没有隐藏
+			$catagory.hide(); //隐藏
+
+			$(this).find("span").text("显示全部品牌") //改变文字提示
+			.css("background","url(img/down.gif) norepeat 0 0");  //改变背景图
+
+			$("ul li").filter(":contains('索尼'), :contains('三星'), :contains('尼康')")
+			.removeClass("promoted"); //取消高亮显示
+		} else {  //如果已经隐藏了
+			$catagory.show(); //点击时显示隐藏的li
+
+			$(this).find("span").text("显示精简品牌") //改变文字提示
+			.css("background","url(img/up.gif norepeat 0 0)");  //改变背景图
+
+			$("ul li").filter(":contains('索尼'),:contains('三星'),:contains('尼康')")
+			.addClass("promoted"); //对某些高亮显示
+		}
+		return false; //阻止超链接跳转
+		})	
+	})
+</script>
+
+</body>
+</html>

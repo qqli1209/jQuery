@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC"-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang = "en">
+<head>
+	<meta charset = "utf-8"/>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<title>停止动画和判断是否处于动画状态</title>
+	<script type="text/javascript" src = "../../scripts/jquery.js"></script>
+</head>
+
+<body>
+<div id="panel">
+</div>
+
+<script type="text/javascript">
+	
+	$(function(){
+		//停止动画
+		/*
+		$("#panel").hover(function(){
+			$(this).stop()
+				   .animate({height:"150px",width:"150px"},200);
+		},function(){
+			$(this).stop()
+				   .animate({height:"22px",width:"60px"},300);
+		})
+		*/
+
+		//停止组合动画
+		/*
+		$("#panel").hover(function(){
+			$(this).stop(true) //若hover事件移除，则清空未完成的动画，执行下一个function
+				   .animate({height:"150px"},200)
+				   .animate({width:"300px"},300);
+		},function(){
+			$(this).stop(true) //若hover事件触发，则清空未完成的动画，执行上一个function
+				   .animate({height:"22px"},200)
+				   .animate({width:"60px"},300);
+		})
+		*/
+		//stop([clearQueue],[gotoEnd])，clearQueue代表是否清空未执行完的动画队列，gotoEnd代表是否直接将正在执行的动画跳转到末状态
+		//stop(true),清空当前元素上未执行完的动画队列
+		//stop(true,true),停止当前动画并直接达到末状态
+
+		//判断元素是否处于动画状态
+		//$(element).is(":animated")
+
+		//延迟动画
+		$("#panel").click(function(){
+			$(this).animate({left:"400px", height:"200px", opacity:"1"}, 3000)
+				   .delay(2000)
+				   .animate({top:"200px", width:"200px"}, 3000)
+				   .delay(2000)
+				   .fadeOut("slow");
+		})
+
+
+	})
+
+	
+
+</script>
+
+
+</body>
+</html>

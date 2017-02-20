@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>demo2</title>
+	<script type="text/javascript" src="../../scripts/jquery.js"></script>
+	<script type="text/javascript" src="../../scripts/lib/jquery.cookie.js"></script>
+</head>
+
+<body>
+<p>
+	<a href="#">设置 cookie (设置有效期天数为 10 天)</a><br>
+	<a href="#">设置 cookie (通过 date 对象设置过期日期为 3 天后的那天)</a><br>
+	<a href="#">获取 cookie</a><br>
+	<a href="#">删除 cookie</a><br>
+	<a href="#">设置另一个 cookie</a><br>
+	<a href="#">获取另一个 cookie</a><br>
+	<a href="#">删除另一个 cookie</a>
+</p>
+
+<script type="text/javascript">
+	var COOKIE_NAME = 'test_cookie';
+	var ADDITIONAL_COOKIE_NAME = 'additional';
+	$(function(){
+		
+		$('a').eq(0).click(function(){
+			$.cookie(COOKIE_NAME, 'cookie one', {path: '/', expires: 10});
+			return false;
+		});
+
+		$('a').eq(1).click(function(){
+			var date = new Date();
+			date.setTime(date.getTime() + (3*24*60*60*1000));
+			$.cookie(COOKIE_NAME, 'cookie one', {path: '/', expires: date});
+			return false;
+		});
+
+		$('a').eq(2).click(function(){
+			alert($.cookie(COOKIE_NAME));
+			return false;
+		});
+
+		$('a').eq(3).click(function(){
+			$.cookie(COOKIE_NAME, null);
+			return false;
+		});
+
+		$('a').eq(4).click(function(){
+			$.cookie(ADDITIONAL_COOKIE_NAME, 'cookie two', {expires: 10});
+			return false;
+		});
+
+		$('a').eq(5).click(function(){
+			alert($.cookie(ADDITIONAL_COOKIE_NAME));
+			return false;
+		});
+
+		$('a').eq(6).click(function(){
+			$.cookie(ADDITIONAL_COOKIE_NAME, null);
+			return false;
+		});
+
+	})
+</script>
+
+
+</body>
+</html>

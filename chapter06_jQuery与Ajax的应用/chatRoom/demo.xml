@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<response> 
+ <status>1</status> 
+ <time>1170323512</time> 
+ <message> 
+   <author>person1</author> 
+   <text>message2</text> 
+ </message> 
+ <message> 
+   <author>person2</author> 
+   <text>message2</text> 
+ </message> 
+</response>

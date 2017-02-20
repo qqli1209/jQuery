@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>7-6-5-color</title>
+	<script type="text/javascript" src="../../scripts/jquery.js"></script>
+	<style type="text/css">
+		.a {
+			color:red;
+		}
+	</style>
+</head>
+
+<body>
+
+<div class="a">red</div>
+<div style="color:blue">blue</div>
+<div style="color:green">green</div>
+<div style="color:yellow">yellow</div>
+
+<script type="text/javascript">
+;(function($){
+	$.fn.extend({
+		"color":function(value){
+			/*
+			if (value==undefined) {
+				return this.css("color");
+			} else {
+				return this.css("color",value);
+			}
+			*/
+			return this.css("color",value);
+		}
+	});
+}(jQuery));
+
+	$(function(){
+		alert($("div").color());
+		alert($("div").color("red"));
+	})
+
+</script>
+
+
+</body>
+</html>
